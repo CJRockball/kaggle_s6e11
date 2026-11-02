@@ -80,7 +80,6 @@ bronze_source_contract:
       - "txn_count_last_24h"
       - "used_vpn"
       - "velocity_score"
-      - "data_type"
     target: ["is_fraud"]
 
 # Business-level validation (enforced downstream in Silver / EDA)
@@ -221,7 +220,25 @@ silver_eda_contract:
                        10, 11, 12, 13, 14, 15, 16, 17,
                        18, 19, 20, 21, 22, 23]
 
-  value_mappings: {}
+  value_mappings:
+    billing_shipping_mismatch:
+      "False": 0
+      "True": 1
+    ip_country_mismatch:
+      "False": 0
+      "True": 1
+    is_ai_generated_scam_attempt:
+      "False": 0
+      "True": 1
+    is_foreign_transaction:
+      "False": 0
+      "True": 1
+    is_new_merchant:
+      "False": 0
+      "True": 1
+    used_vpn:
+      "False": 0
+      "True": 1
 
   missingness:
     default_max_rate: 0.0
